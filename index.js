@@ -32,18 +32,6 @@ function updateClocks() {
     tokyoTimeElement.innerHTML = `${tokyoTimeZone.format("h:mm:ss")} <small>${tokyoTimeZone.format("A")}</small>`;
   }
 
-  // Sydney
-  let sydneyElement = document.querySelector("#sydney");
-  if (sydneyElement) {
-    let sydneyDateElement = sydneyElement.querySelector(".date");
-    let sydneyTimeElement = sydneyElement.querySelector(".time");
-    let sydneyTimeZone = moment().tz("Australia/Sydney");
-    sydneyDateElement.innerHTML = sydneyTimeZone.format("MMMM Do, YYYY");
-    sydneyTimeElement.innerHTML = `${sydneyTimeZone.format("h:mm:ss")} <small>${sydneyTimeZone.format("A")}</small>`;
-  }
-}
-
-
 function updateCity(event) {
   let cityTimeZone = event.target.value;
 
@@ -56,9 +44,6 @@ function updateCity(event) {
 
   let cityName = cityTimeZone.split("/")[1].replace("_", " ");
   alert(`You selected: ${cityName}`);
-
-
-
 
   let citiesElement = document.querySelector("#cities");
 
