@@ -33,24 +33,29 @@ function updateTime() {
     tokyoTimeElement.innerHTML = `${tokyoTimeZone.format("h:mm:ss")} <small>${tokyoTimeZone.format("A")}</small>`;
   }
 
+pdateTime();
+setInterval(updateTime, 1000);
+
 function updateCity(event) {
-  let cityTimezone = event.target.value;
-
-  if (cityTimezone === "current") {
-    cityTimezone = moment.tz.guess();
+  let cityTZ = event.target.value;
+  if (cityTZ === "current") {
+    cityTZ = moment.tz.guess();
   }
-  let cityTime = moment().tz(cityTimezone);
-  let cityElement = document.querySelector("#cities");
-  let cityName = cityTimezone.split("/")[1].replace("_", " ");
+  let cityName = cityTZ.replace("_", " ").split("/")[1];
 
-  cityElement.innerHTML = `<div class="city">
-          <div class="city-time">
-            <h2>${cityName}</h2>
-            <div class="date">${cityTime.format("dddd Do MMMM YYYY")}</div>
-          </div>
-          <div class="time">${cityTime.format(
-            "H:mm:ss [<small>]A[</small>]"
-          </div>
+  let cityTime = moment().tz(cityTZ);
+  let citiesElemet = document.querySelector("#cities");
+
+  citiesElemet.innerHTML = `<div class="city" >
+                        <div>
+                            <h2>${cityName} </h2>
+                            <div class= "date">${cityTime.format(
+                              "MMMM Do YYYY"
+                            )}</div>
+                        </div>
+                        <div class="time">${cityTime.format("h:mm:ss")} 
+                                   <small>${cityTime.format("A")}</small>
+                         </div>
                   </div>
                   <a href="/">All Cities</a> `;
 }
