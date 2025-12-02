@@ -75,6 +75,5 @@ updateClocks();
 setInterval(updateClocks, 1000);
 
 
-let citiesSelect = document.getElementById("city");
-citiesSelect.addEventListener("change", updateCity);
+let citiesSelectElement = document.querySelector("#city");
 citiesSelectElement.addEventListener("change", updateCity);
