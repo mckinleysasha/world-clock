@@ -30,7 +30,6 @@ h2 {
   margin: 0 0 5px;
   font-size: 28px;
 }
-
 select {
   display: block;
   width: 100%;
@@ -44,6 +43,11 @@ select {
   justify-content: space-between;
   margin: 30px 0;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  border-radius: 10px;
+  background: green;
+  padding: 30px;
+  box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
 }
 
 .city:last-child {
