@@ -1,15 +1,13 @@
 function updateTime() {
-  let londonElement = document.querySelector("#london");
-
+ let londonElement = document.querySelector("#london");
   if (londonElement) {
     let londonDateElement = londonElement.querySelector(".date");
     let londonTimeElement = londonElement.querySelector(".time");
-
     let londonTime = moment().tz("Europe/London");
 
-    londonDateElement.innerHTML = londonTime.format("dddd Do MMMM YYYY");
-    londonTimeElement.innerHTML = londonTime.format(
-      "H:mm:ss [<small>]A[</small>]"
+    
+    londonDateElement.innerHTML = londonTime.format("MMMM Do YYYY");
+    londonTimeElement.innerHTML = londonTime.format["h:mm:ss [<small>]A[</small>]"
     );
   }
 
@@ -60,5 +58,8 @@ function updateCity(event) {
                   <a href="/">All Cities</a> `;
 }
 
-let citiesSelectElement = document.querySelector("#city");
-citiesSelectElement.addEventListener("change", updateCity);
+updateTime();
+setInterval(updateTime, 1000);
+
+let citiesChosenElement = document.querySelector("#city");
+citiesChosenElement.addEventListener("change", updateCity);
