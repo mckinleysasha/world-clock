@@ -8,8 +8,8 @@ function updateTime()
 
     
     londonDateElement.innerHTML = londonTime.format("MMMM Do YYYY");
-    londonTimeElement.innerHTML = londonTime.format["h:mm:ss [<small>]A[</small>]";
-  );
+    londonTimeElement.innerHTML = londonTime.format["h:mm:ss [<small>]A[</small>]"
+     );
   }
   // New York
  {
@@ -19,7 +19,8 @@ function updateTime()
     let newYorkTimeElement = newYorkElement.querySelector(".time");
     let newYorkTimeZone = moment().tz("America/New_York");
     newYorkDateElement.innerHTML = newYorkTimeZone.format("MMMM Do, YYYY");
-    newYorkTimeElement.innerHTML = `${newYorkTimeZone.format("h:mm:ss")} <small>${newYorkTimeZone.format("A")}</small>`);
+    newYorkTimeElement.innerHTML = `${newYorkTimeZone.format("h:mm:ss")} <small>${newYorkTimeZone.format("A")}</small>`
+     );
   }
 }
 
@@ -32,39 +33,34 @@ function updateTime()
 
     tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do YYYY");
     tokyoTimeElement.innerHTML = tokyoTime.format(
-      "h:mm:ss [<small>]A[</small>]"
-    );
+      "h:mm:ss [<small>]A[</small>]" );
   }
-
-updateTime();
-setInterval(updateTime, 1000);
+}
 
 function updateCity(event) {
-  let cityTZ = event.target.value;
-  if (cityTZ === "current") {
-    cityTZ = moment.tz.guess();
+  let cityTimeZone = event.target.value;
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
   }
-  let cityName = cityTZ.replace("_", " ").split("/")[1];
-
-  let cityTime = moment().tz(cityTZ);
-  let citiesElemet = document.querySelector("#cities");
-
-  citiesElemet.innerHTML = `<div class="city" >
-                        <div>
-                            <h2>${cityName} </h2>
-                            <div class= "date">${cityTime.format(
-                              "MMMM Do YYYY"
-                            )}</div>
-                        </div>
-                        <div class="time">${cityTime.format("h:mm:ss")} 
-                                   <small>${cityTime.format("A")}</small>
-                         </div>
-                  </div>
-                  <a href="/">All Cities</a> `;
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `
+  <div class="city">
+    <div>
+      <h2>${cityName}</h2>
+      <div class="date">${cityTime.format("MMMM	Do YYYY")}</div>
+    </div>
+    <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
+    "A"
+  )}</small></div>
+  </div>
+  <a href="/">All cities</a>
+  `;
 }
 
 updateTime();
 setInterval(updateTime, 1000);
 
-let citiesChosenElement = document.querySelector("#city");
-citiesChosenElement.addEventListener("change", updateCity);
+let citiesSelectElement = document.querySelector("#city");
+citiesSelectElement.addEventListener("change", updateCity);
